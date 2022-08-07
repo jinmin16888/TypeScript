@@ -1,0 +1,84 @@
+{
+  /*
+   tsconfig.json 是 ts 编译器的配置文件，ts编译器可以根据它的的配置信息来对代码进行编译
+    
+    1、"include" 用来指定哪些 ts 文件需要被编译
+      路径：** 表示任意的目录
+            *  表示任意的文件
+ */
+  "include": [
+    // "**/*",
+    "./src/**/*"
+  ],
+  /*
+    2、"exclude" 不需要被编译的文件
+      默认值：["node_modules","bower_components","jspm_packages"]
+      可以不用设置："exclude" 的配置，默认已经设置好了
+  */
+  "exclude": [
+    //不需要编译的文件
+  ],
+  //编译器的选项
+  "compilerOptions": {
+    //"target" 用来指定ts被编译的ES的版本
+    // 可以被 target 指定的版本的 'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.
+    "target": "ES6",
+    // "module" 指定要使用的模块化的规范(代码的模块规范)
+    //可以被指定的模块化的规范：'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node16', 'nodenext'.
+    "module": "amd",
+    // lib 用来指定项目中要使用的库：
+    /* 可以指定的库
+        es5', 'es6', 'es2015', 'es7', 'es2016', 'es2017', 'es2018', 
+      'es2019', 'es2020', 'es2021', 'es2022', 'esnext', 'dom', 'dom.iterable', 
+      'webworker', 'webworker.importscripts', 'webworker.iterable', 'scripthost',
+       'es2015.core', 'es2015.collection', 'es2015.generator', 'es2015.iterable', 
+       'es2015.promise', 'es2015.proxy', 'es2015.reflect', 'es2015.symbol',
+        'es2015.symbol.wellknown', 'es2016.array.include', 'es2017.object',
+         'es2017.sharedmemory', 'es2017.string','es2017.intl', 'es2017.typedarrays', 
+         'es2018.asyncgenerator', 'es2018.asynciterable', 'es2018.intl', 'es2018.promise', 
+         'es2018.regexp', 'es2019.array', 'es2019.object', 'es2019.string', 'es2019.symbol', 
+         'es2020.bigint','es2020.date', 'es2020.promise', 'es2020.sharedmemory', 'es2020.string', 
+          'es2020.symbol.wellknown', 'es2020.intl', 'es2020.number', 'es2021.promise', 
+          'es2021.string', 'es2021.weakref', 'es2021.intl', 'es2022.array', 'es2022.error', 
+          'es2022.intl', 'es2022.object', 'es2022.string', 'esnext.array', 'esnext.symbol',
+          'esnext.asynciterable', 'esnext.intl', 'esnext.bigint', 'esnext.string',
+           'esnext.promise', 'esnext.weakref'.
+    */
+    // "lib": [
+    // "xxx"
+    // ],
+    // outDit 用来指定编译后的文件所在的目录，而且并保留了编译后文件的目录结构
+    //语法："outDir":"路径/编译后的文件名"
+    "outDir": "./dist",
+    //将代码合并为一个文件
+    // 设置outFile后，所有的全局作用域中的代码会合并到同一个文件中
+    // 语法："outFile"："指定路径中的文件，进行全局作用域的代码，合并到同一个文件中"
+    // 报错：tsconfig.json:55:5 - error TS6082: Only 'amd' and 'system' modules are supported alongside --outFile.
+    // 报错的原型：想要合并成为一个文件，必须 模块规范 必须是 amd 模块化规范格式 或者 system 模块规范格式
+    // "outFile": "./dist/src/app.js",
+    //是否对js文件进行编译,默认 false
+    "allowJs": true,
+    //检查js代码是否符合代码合理法语规范（代码的规范）
+    "checkJs": true,
+    // 是否移除注释
+    "removeComments": true,
+    // 不生成编译后的文件
+    // "noEmit": false,
+    
+    //所有严格检查的总开关,为true时，所有的严格检查都打开，为false时，所有的严格检查都关闭的
+    //在大型的项目中，默认为true，开所有的严格检查，使我们代码更加严谨，出错的几率更低
+    //小项目不暂时不考虑
+    "strict": true,
+    //当有错误时不生成编译后的文件
+    "noEmitOnError": false,
+    // 用来设置编译后的文件是否使用严格模式，默认 false
+    // 当 代码写了 （export）导入引出模块时，js 代码会自动进入严格模式
+    "alwaysStrict": true,
+    // 不允许隐式的any类型
+    "noImplicitAny": true,
+    // 不允许不明确类型的this，如何避免不被运行呢？可以给 this 明确类型
+    "noImplicitThis": true,
+    // 严格检查空值，为了避免无法正常使用this，可以给 this 做一个判断，不为null 才可以执行 this
+    "strictNullChecks": true
+  },
+}
